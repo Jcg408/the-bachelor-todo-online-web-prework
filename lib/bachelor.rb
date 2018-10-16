@@ -1,5 +1,5 @@
 def get_first_name_of_season_winner(data, season)
-  name = nil
+  name = " "
      data[season].each do |index|
         if index["status"] == "Winner"
             name = index["name"]
@@ -47,14 +47,20 @@ def get_occupation(data, hometown)
 def get_average_age_for_season(data, season)
     ages = []
     average = 0
-      data.each do |k, v|
-        if season == k
-          v.each do |x|
-          ages << x["age"].to_i
-         average = ages.inject {|sum, element| sum + element}.to_f/ages.size
-            end
-          end
+      # data.each do |k, v|
+      #   if season == k
+      #     v.each do |x|
+      #     ages << x["age"].to_i
+      #   average = ages.inject {|sum, element| sum + element}.to_f/ages.size
+      #       end
+      #     end
+      # end
+      data[season].each do|array|
+        array.each do |hash|
+        ages << hash["age"].to_i
       end
+    end
+      
       average.round
         end
         
